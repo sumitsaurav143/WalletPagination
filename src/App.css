@@ -1,0 +1,62 @@
+.Main_container{
+  overflow: hidden;
+}
+input{
+  height: 50px;
+  font-size: 30px;
+}
+.SrcBox{
+  height:10vh;
+  width:100vw;
+  background-color: rgb(245, 151, 37);
+  border:2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+height:80vh;
+width:100vw;
+background-color: bisque;
+border:1px solid black;
+display: flex;
+flex-wrap: wrap;
+}
+
+.data_box{
+  border: 1px solid black;
+  width: 300px;
+  height: 120px;
+  margin: 10px;
+  background-color: rgb(199, 121, 5);
+  border-radius: 10px;
+}
+.pagination {
+  margin: 15px auto;
+  display: flex;
+  list-style: none;
+  outline: none;
+}
+.pagination > .active > a{
+  background-color: rgb(199, 121, 5); ;
+  border-color: rgb(199, 121, 5); ;
+  color: #fff;
+}
+.pagination > li > a{
+  border: 1px solid rgb(199, 121, 5); ;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+  background-color: rgb(199, 121, 5); ;
+  border-color: rgb(199, 121, 5);;
+  outline: none ;
+}
+.pagination > li > a, .pagination > li > span{
+  color: rgb(199, 121, 5);
+}
+.pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
+  border-radius: unset
+}

@@ -21,7 +21,7 @@ export default function PaginationDynamic(){
   //     setData(apiData)
        setPageCount(Math.ceil(apiData.length / perPage))
        setData(apiData.slice(offset, offset + perPage))
-       console.log("RANGE:"+offset+" "+(offset+perPage))
+       //console.log("RANGE:"+offset+" "+(offset+perPage))
   //   }
   //   fetchData();
    }, [apiData,offset])
@@ -29,21 +29,15 @@ export default function PaginationDynamic(){
   function check() {
 
     if (walletId !== "") {
-        // jQuery(".loader").show();
         const options = { method: 'GET' };
-        //var wallet = document.getElementById("wallet").value;
-        // Cookies.set("wallet", wallet);
-        console.log("FUNCTION CALLED!!")
-        //console.log('https://api.opensea.io/api/v1/collections?offset=0&limit=300&asset_owner=' + walletId);
+        //console.log("FUNCTION CALLED!!")
         fetch('https://api.opensea.io/api/v1/collections?offset=0&limit=300&asset_owner=' + walletId, options)
             .then(response => response.json())
             .then(response => {
                 //console.log(response);
                 setapiData(response);
-                // $("#result").html("");
                 for (var i = 0; i < response.length; i++) {
                     var obj = response[i];
-
                     var floor = jQuery.ajax({
                         type: 'GET',
                         global: false,
@@ -57,12 +51,8 @@ export default function PaginationDynamic(){
                         }
                     }).responseJSON.stats.floor_price;
                     response[i].stats.floor_price=floor;
-                    setCount(count=>count+1);
-
-                    // $("#result").append('<a target="_blank" href="https://opensea.io/collection/' + obj.slug + '">' + '🔗' + obj.name + '</a>' + ' <br><span id="floor">Floor Price: ' + floor + '</span><br><br>');
                     jQuery(".loader").hide();
                 }
-                //console.log(response);
                 setapiData(response);
             })
             .catch(err => console.error(err));
@@ -83,6 +73,7 @@ export default function PaginationDynamic(){
   const callapi=(e)=>{
     e.preventDefault();
     console.log("WALLET ID IS: "+walletId);
+    setCount(1);
     check();
   }
 
@@ -96,6 +87,7 @@ export default function PaginationDynamic(){
 
     <div className='SrcBox'>
       <form onSubmit={(e)=>callapi(e)}>
+      
       <input ref={walletValue} type="text" onChange={searchWallet} placeholder="GIVE WALLET NUMBER"></input>
       </form>
     </div>
@@ -103,7 +95,7 @@ export default function PaginationDynamic(){
 
     <div className="container">
       {
-        pageCount==0 && walletId!="" ? <h1 className='loader'>Loading, please wait...</h1> : null
+        pageCount===0 && count!==0 ? <div className='loader'></div> : null
       }
       
       {

@@ -99,6 +99,9 @@ flex-wrap: wrap;
   justify-content: center;
   }
   
+  .SrcBox {
+    position: fixed;}
+  
   .data_box{
     border: 2px solid black;
     width: 80vw;
